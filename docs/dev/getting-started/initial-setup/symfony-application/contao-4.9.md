@@ -592,6 +592,12 @@ class AppCache extends HttpCache implements CacheInvalidation
 }
 ```
 
+You also have to modify `bin/console` to use your new Kernel class (otherwise it will complain about non existent App\Kernel class :
+```php
+- use App\Kernel;
++ use \App\ContaoKernel\AppKernel as Kernel;
+```
+
 The last thing now is to adjust the config for the routing via annotations.
 If the file `config/routes/annotations.yaml` and a config for `kernel` exists, change it to this:
 
